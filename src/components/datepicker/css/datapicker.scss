@@ -1,0 +1,335 @@
+@import "font/iconfont.css";
+
+/* set the color you like*/
+$border: #ccc;
+$totalBG: #fff;
+$boxShadow: 0px 2px 5px 0px rgba(84, 84, 84, 0.21);
+$paneBG: #eee;
+$borderRadius: 3px;
+$normalRadius: 0px;
+$normalWord: #333;
+$normalWeek: #868686;
+$canNotChoose: #b9b9b9;
+$choosed: #fff;
+$singleChooseBG: #2c97f1;
+$mulitChooseBG: #86c3f6;
+$titleHover: #eee;
+
+/*dom structure and color*/
+.k-datePicker {
+  margin-top: 1px;
+  display: inline-block;
+  position: absolute;
+  width: 210px;
+  max-height: 241px;
+  padding: 5px 6px;
+  background: $totalBG;
+  border: 1px solid $border;
+  box-shadow: $boxShadow;
+  border-radius: $borderRadius;
+  text-align: center;
+  cursor: default;
+  color: $normalWord;
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
+}
+
+.datePane {
+  .titlePanel {
+    position: relative;
+    overflow: hidden;
+    height: 30px;
+    width: 196px;
+  }
+  .yearBox {
+    position: absolute;
+    height: inherit;
+    width: inherit;
+    .previousBtn, .nextBtn {
+      width: 30px;
+    }
+    .Title {
+      font-weight: bold;
+      font-size: 16px;
+      width: 128px;
+      padding: 0 5px;
+      overflow: hidden;
+      position: relative;
+    }
+    ul {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      li {
+        height: 30px;
+        line-height: 30px;
+        &:hover {
+          background: $titleHover;
+          color: $normalWeek;
+          border-radius: $borderRadius;
+          cursor: pointer;
+        }
+      }
+    }
+    .Title-ul {
+      .title-year, .title-month {
+        height: inherit;
+        position: relative;
+        width: 50px;
+        display: inline-block;
+      }
+      width: 100%;
+      text-align: center;
+      position: relative;
+      height: inherit;
+      div {
+        width: 100%;
+        position: absolute;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+        -ms-flex-pack: distribute;
+            justify-content: space-around;
+      }
+    }
+  }
+  .chooseBox {
+    margin-top: 5px;
+    height: 192px;
+    position: relative;
+    overflow: hidden;
+    .chooseDay {
+      width: 100%;
+      .dayTitle {
+        position: relative;
+        li {
+          width: 20px;
+          height: 20px;
+          line-height: 20px;
+          font-size: 14px;
+          color: $normalWeek;
+          text-align: center;
+        }
+      }
+      .dayList {
+        position: absolute;
+        height: 168px; /*control up and down gaps*/
+        color: $normalWord;
+        li {
+          width: 26px;
+          height: 28px;
+          line-height: 28px;
+          text-align: center;
+          -webkit-transition: background ease-in-out .15s;
+          transition: background ease-in-out .15s;
+          &:hover {
+            background: $mulitChooseBG;
+            border-radius: $borderRadius;
+            color: $choosed;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+  /*flex display*/
+  .dayList, .yearList, .monthList, .dayTitle, .hourList {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .monthList, .yearList, .timeList {
+    position: absolute;
+  }
+  .dayTitle {
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+  }
+  /*set choose hover style*/
+  .chooseBox .chooseYear .yearList, .chooseBox .chooseDay .dayList, .chooseMonth .monthList, .chooseHour .hourList, .chooseMinute .hourList {
+    .canNotChoose {
+      color: $canNotChoose;
+      &:hover {
+        background: none;
+        color: $canNotChoose;
+        cursor: not-allowed;
+      }
+    }
+    .previousChoose {
+      color: $canNotChoose;
+    }
+    .singleChoosed {
+      border-radius: $borderRadius;
+      background: $singleChooseBG;
+      color: $choosed;
+    }
+    .mulitChoosed, .mulitChoosedHead, .mulitChoosedEnd {
+      color: $choosed;
+      background: $singleChooseBG;
+    }
+    .mulitChoosed {
+      background: $mulitChooseBG;
+    }
+    .mulitChoosedHead {
+      border-top-left-radius: $borderRadius;
+      border-bottom-left-radius: $borderRadius;
+    }
+    .mulitChoosedEnd {
+      border-top-right-radius: $borderRadius;
+      border-bottom-right-radius: $borderRadius;
+    }
+  }
+  /*choose year and month is the same*/
+  .chooseYear .yearList, .chooseMonth .monthList {
+    li {
+      width: 65px;
+      height: 48px;
+      line-height: 48px;
+      text-align: center;
+      -webkit-transition: background ease-in-out .15s, background ease-in-out .15s;
+      transition: background ease-in-out .15s, background ease-in-out .15s;
+      &:hover {
+        background: $singleChooseBG;
+        border-radius: $borderRadius;
+        color: $choosed;
+        cursor: pointer;
+      }
+    }
+  }
+  .hourList {
+    position: absolute;
+    height: 192px;
+    -ms-flex-line-pack: start;
+        align-content: flex-start;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    li {
+      width: 49px;
+      height: 32px;
+      line-height: 32px;
+      text-align: center;
+      -webkit-transition: background ease-in-out .15s, background ease-in-out .15s;
+      transition: background ease-in-out .15s, background ease-in-out .15s;
+      &:hover {
+        background: $singleChooseBG;
+        border-radius: $borderRadius;
+        color: $choosed;
+        cursor: pointer;
+      }
+    }
+  }
+  .chooseYear, .chooseMonth, .chooseDay, .chooseHour {
+    position: absolute;
+  }
+}
+
+/*animate*/
+.datePicer-Toggle-enter-active, .datePicer-Toggle-leave-active {
+  -webkit-transition: all .45s cubic-bezier(.26, .67, .75, .97);
+  transition: all .45s cubic-bezier(.26, .67, .75, .97)
+}
+
+.datePicer-Toggle-enter {
+  -webkit-transform: translateY(-20px);
+  transform: translateY(-20px);
+  opacity: 0;
+}
+
+.datePicer-Toggle-leave-active {
+  -webkit-transform: translateY(-20px);
+  transform: translateY(-20px);
+  opacity: 0;
+}
+
+.toggle-title-enter-active, .toggle-title-leave-active {
+  -webkit-transition: all .45s ease-in-out;
+  transition: all .45s ease-in-out
+}
+
+.toggle-title-enter {
+  opacity: 0;
+}
+
+.toggle-title-leave-active {
+  opacity: 0;
+  -webkit-transform: scale(0.8);
+  transform: scale(0.8);
+}
+
+.next-panel-enter-active, .next-panel-leave-active, .previous-panel-enter-active, .previous-panel-leave-active {
+  -webkit-transition: all .45s ease-in-out;
+  transition: all .45s ease-in-out
+}
+
+.next-panel-enter, .previous-panel-leave-active {
+  opacity: 0;
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+}
+
+.next-panel-leave-active, .previous-panel-enter {
+  opacity: 0;
+  -webkit-transform: scale(0.8);
+  transform: scale(0.8);
+}
+
+.change-Month-Box {
+  background: $paneBG;
+  border-radius: $borderRadius;
+  position: relative;
+  width: 196px;
+  height: 168px;
+}
+
+.change-year-Box, .change-hour-Box, .change-minute-Box {
+  background: $totalBG;
+  position: relative;
+  width: 196px;
+  height: 192px;
+}
+
+//todo title brand roll effect
+
+.previous-Month-enter-active, .previous-Month-leave-active, .next-Month-enter-active, .next-Month-leave-active {
+  -webkit-transition: all .6s cubic-bezier(0.84, 0.05, 0.46, 0.52);
+  transition: all .6s cubic-bezier(0.84, 0.05, 0.46, 0.52);
+}
+
+.previous-Month-enter, .next-Month-leave-active {
+  opacity: 0;
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+}
+
+.previous-Month-leave-active, .next-Month-enter {
+  opacity: 0;
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+}
+
+.previous-Title-enter-active, .previous-Title-leave-active, .next-Title-enter-active, .next-Title-leave-active {
+  -webkit-transition: all .45s ease-in-out;
+  transition: all .45s ease-in-out;
+}
+
+.previous-Title-enter, .next-Title-leave-active {
+  -webkit-transform: translateY(-100%);
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.previous-Title-leave-active, .next-Title-enter {
+  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
+  opacity: 0;
+}
