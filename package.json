@@ -7,8 +7,8 @@
     "build": "node build/build.js",
     "dev": "node build/dev-server.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["vue","datepicker"],
+  "author": "k186(k1868548@gmail.com)",
   "license": "ISC",
   "dependencies": {
     "vue": "^2.2.1",
