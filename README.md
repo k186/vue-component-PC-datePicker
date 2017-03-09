@@ -3,7 +3,7 @@
 ###[result](http://k186studio.com/demos/vue/pcPicker/)
 
 ###result
-![](http://p1.bqimg.com/567571/da28ddcde28eb624.gif)
+![open](http://omhgkqaq2.bkt.clouddn.com/datepicker2.gif)
 
 ###Build Setup
 ```$xslt
