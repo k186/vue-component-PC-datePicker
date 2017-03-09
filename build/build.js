@@ -5,10 +5,10 @@ const webpack = require('webpack');
 const ProdConfig = require('./webpack.prod.config');
 const chalk = require('chalk');
 const ora = require('ora');
-//clear dist
-rm('-rf', './dist');//force delete
-mkdir('-p', './dist/static');//create dist/static
-cp('-R', 'static/*', './dist/static');//CP static file non-compressed
+
+rm('-rf', './dist');
+mkdir('-p', './dist/static');
+cp('-R', 'static/*', './dist/static');
 
 const spinner = ora('building production.....');
 spinner.start();

@@ -22,7 +22,7 @@ const ProdConfig = merge(baseConfig, {
     chunkFilename: tool.staticPath('js/[id].[chunkhash].js')
   },
   plugins: [
-    // http://vuejs.github.io/vue-loader/en/workflow/production.html
+
     new webpack.DefinePlugin({
       'process.env': env
     }),
@@ -34,13 +34,13 @@ const ProdConfig = merge(baseConfig, {
      },
       sourceMap: true
      }),
-    //extract css  into one files?
+
     new ExtractTextPlugin({
       filename: tool.staticPath('css/[name].[contenthash].css')
     }),
-    //solve extract css duplicated problem
+
     new OptimizeCSSPlugin(),
-    //auto inject js css to index.html
+
     new HtmlWebpackPlugin({
       filename: config.build.indexHtml,
       template: 'index.html',
@@ -49,21 +49,13 @@ const ProdConfig = merge(baseConfig, {
         removeComments: true,
         collapseWhitespace: true,
         removeAttributeQuotes: true
-        // more options:
-        // https://github.com/kangax/html-minifier#options-quick-reference
       },
-      // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency'
     }),
-    //https://webpack.js.org/plugins/commons-chunk-plugin/
-    //Generate an extra chunk, which contains common modules shared between entry points.
-    //in here we generate chunk,which is from node_modules
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: function (module, count) {
-        // If module has a path, and inside of the path exists the name "/\.js$/",like vue jq ...
-        // only vendor node_modules file
-        //console.log(JSON.stringify(module.resource)+'>>>>>>\n\n')
+
         return (
           module.resource &&
           /\.js$/.test(module.resource) &&
@@ -73,8 +65,6 @@ const ProdConfig = merge(baseConfig, {
         )
       }
     }),
-    // extract webpack runtime and module manifest to its own file in order to
-    // prevent vendor hash from being updated whenever main.js bundle is updated
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
       chunks: ['vendor']
