@@ -1,3 +1,5 @@
+# don't use this in your production env
+
 ### vue deatePicker for pc component
 
 ###[result](http://k186studio.com/demos/vue/pcPicker/)
